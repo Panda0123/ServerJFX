@@ -8,14 +8,17 @@ public class ClientPOJO {
     private Socket socket;
     private DataOutputStream out;
     private DataInputStream in;
+    private boolean isOn;
     private String username;
 
-    public ClientPOJO(Socket socket, DataOutputStream out, DataInputStream in, String username) {
+    public ClientPOJO(Socket socket, DataOutputStream out, DataInputStream in, String username, Boolean isOn) {
         this.socket = socket;
         this.out = out;
         this.in = in;
         this.username = username;
+        this.isOn = isOn;
     }
+
 
     public Socket getSocket() {
         return socket;
@@ -47,6 +50,15 @@ public class ClientPOJO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+
+    public boolean isOn() {
+            return isOn;
+        }
+
+    public void setOn(boolean isOn) {
+        this.isOn = isOn;
     }
 
     @Override

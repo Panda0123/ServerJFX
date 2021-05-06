@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,7 +25,7 @@ public class Controller {
     public void activateBtnHandler(ActionEvent event) {
         String red = "#D04242";
         String green = " #499C54";
-        if (Server.getReceiveClientThread() == null) {
+        if (!Server.isIsServerOn()) {
             Server.start(8080);
             activateBtn.setText("DEACTIVATE");
             setBGColor(activateBtn, red);
@@ -46,7 +47,7 @@ public class Controller {
     }
 
     public void updateBtnHandler(ActionEvent event) {
-        if (Server.getReceiveClientThread() == null) {
+        if (!Server.isIsServerOn()) {
             System.out.println("Server is off");
         } else {
             memo = memoTextArea.getText();
